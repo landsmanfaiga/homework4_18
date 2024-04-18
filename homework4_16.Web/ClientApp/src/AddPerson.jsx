@@ -32,7 +32,8 @@ class AddPerson extends React.Component {
                 lastName: '',
                 age: '',
                 }
-            });
+        });
+        this.props.navigate('/');
     }
     render() {
         const { firstName, lastName, age } = this.state.person;
@@ -46,9 +47,9 @@ class AddPerson extends React.Component {
                             <br/>
                     <input type="text" className="form-control" name="age" placeholder="Age" value={age} onChange={this.onTextChange} />
                     <br />
-                    <Link to='/'>
-                        <button className="btn btn-primary btn-lg btn-block" onClick={this.onSubmitClick}>Submit</button>
-                    </Link>
+               
+                    <button className="btn btn-primary btn-lg btn-block" onClick={this.onSubmitClick}>Submit</button>
+                    
                             
                 </div>
             </>

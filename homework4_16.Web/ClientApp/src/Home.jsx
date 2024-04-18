@@ -15,15 +15,15 @@ class Home extends React.Component {
         }
     }
 
-    ComponentDidMount = async () => {
+    componentDidMount = async () => {
         this.loadPeople();
         
     }
     loadPeople = async() => {
         const response = await axios.get('/api/peoplecars/getall');
         this.setState({ people: response.data });
-        console.log(this.state.people);
     }
+
 
    
 
@@ -45,7 +45,7 @@ class Home extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.people.map(p => <PersonRow key={p.id} person={p}></PersonRow>) }
+                        {this.state.people.map(p => <PersonRow key={p.id} person={p}></PersonRow>)}
 
                     </tbody>
                 </table>

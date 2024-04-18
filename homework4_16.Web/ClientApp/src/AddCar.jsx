@@ -27,14 +27,15 @@ class AddCar extends React.Component {
 
     onSubmitClick = async () => {
         const { make, model, year} = this.state.car;
-        await axios.post('/api/peoplecars/addcar', { id: this.props.params.id, make: make, model: model, year: year });
+        await axios.post('/api/peoplecars/addcar', {personId: this.props.params.id, make: make, model: model, year: year});
         this.setState({
-            person: {
-                firstName: '',
-                lastName: '',
-                age: '',
+            car: {
+                make: '',
+                model: '',
+                year: '',
             }
         });
+        this.props.navigate('/');
     }
     render() {
         const { make, model, year } = this.state.car;
@@ -47,9 +48,9 @@ class AddCar extends React.Component {
                         <br/>
                     <input type="text" className="form-control" name="year" placeholder="Year" value={year} onChange={this.onTextChange} />
                         <br/>
-                    <Link to='/'>
+                   
                         <button className="btn btn-primary btn-lg btn-block" onClick={this.onSubmitClick}>Submit</button>
-                    </Link>
+                
                 </div>
             </>
         )

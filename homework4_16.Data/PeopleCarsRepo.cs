@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace homework4_16.Data
         public List<Person> GetAll()
         {
             using var context = new PeopleCarsDataContext(_connectionString);
-            return context.People.ToList();
+            return context.People.Include(p => p.Cars).ToList();
         }
 
         public List<Car> GetCarsForPerson(int id)
@@ -37,6 +38,7 @@ namespace homework4_16.Data
         {
             using var context = new PeopleCarsDataContext (_connectionString);
             context.Cars.Add(car);
+            context.SaveChanges();
         }
 
         public void DeleteCarsForPerson(int id)
